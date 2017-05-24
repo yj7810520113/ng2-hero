@@ -1,0 +1,16 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li [class.selected]="hero===selectedHero" *ngFor="let hero of heroes" (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <h2>
+    <!--//管道操作符|   ,管道操作符一般格式化字符串、金额、日期和显示其他数据-->
+    {{selectedHero.name|uppercase}}is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
