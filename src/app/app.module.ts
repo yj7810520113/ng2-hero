@@ -56,9 +56,9 @@ import {LoggerService} from "./logger.service";
   ],
   providers: [
     HeroService,
-    // LoggerService
+    LoggerService
   ],
-  bootstrap: [HeroFormComponent],
+  bootstrap: [AppComponent],
 
 })
 export class AppModule { }

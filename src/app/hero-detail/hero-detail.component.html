@@ -5,6 +5,10 @@
   <div><label>id: </label>{{hero.id}}</div>
   <div>
     <label>name: </label>
+
+
+    <!--[(ngModel)]同样的效果-->
+    <!--<input [value]="hero.name" (input)="hero.name=$event.target.value">-->
     <input [(ngModel)]="hero.name" placeholder="name"/>
   </div>
   <button (click)="goBack()">Back</button>
