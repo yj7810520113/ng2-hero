@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Hero Form</h1>
+
+  <div [hidden]="submitter">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+    {{disgnosticValue()}}
+    <div class="form-group">
+      <label for="name">Name</label>
+
+      <!--ngmodel不仅仅跟踪状态，还可以使用特定的angularcss类来更新控件，以反映当前状态，可以利用这些css类来修改控件的外观，显示或隐藏消息-->
+      <!--有1.控件被访问过了ng-touched/ng-untouched  2.控件的值变化了 ng-dirty/ng-pristine   3.控件的值有效 ng-valid/ng-invalid-->
+      <input type="text" class="form-control" id="name" required #name="ngModel" [(ngModel)]="model.name" name="name">
+      <div [hidden]="name.valid || name.pristine"   class="alert alert-danger">
+      <!--<div [hidden]="hidden"-->
+
+        Name is required
+      </div>
+
+      TODO: remove this: {{name.className}}
+
+    </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
+
+    </div>
+    <div class="form-group">
+
+      <!--每个 input 元素都有id属性，label元素的for属性用它来匹配到对应的输入控件。-->
+      <!--每个 input 元素都有name属性，Angular 表单用它注册控件。-->
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required [(ngModel)]="model.power" name="power">
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid" (click)="onSubmit()">Submit</button>
+    <button type="button" class="btn btn-default" (click)="newHero();heroForm.reset()" >New Hero</button>
+
+  </form>
+</div>
+</div>

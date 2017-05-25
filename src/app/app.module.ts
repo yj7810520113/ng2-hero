@@ -12,24 +12,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {AppRoutingModule} from './app-routing.module';
 
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { HeroFormComponent } from './hero-form/hero-form.component';
+import {LoggerService} from "./logger.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    HttpModule,
-    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     // RouterModule.forRoot([
     //   {
     //     path:'heroes',
@@ -57,9 +55,10 @@ import { InMemoryDataService }  from './in-memory-data.service';
     // ])
   ],
   providers: [
-    HeroService
+    HeroService,
+    // LoggerService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [HeroFormComponent],
 
 })
 export class AppModule { }
